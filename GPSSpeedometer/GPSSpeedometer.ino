@@ -8,8 +8,8 @@
 #define PIN_CLK 3
 #define PIN_DIO 4
 //GT-U7 Pins (need to update these)
-#define PIN_RX 0
-#define PIN_TX 0
+#define PIN_RX 8
+#define PIN_TX 10
 
 //OBJECT INIT: this is where we make objects for classes. This way we can refer back to them later and use their functions.
 //Display objects
@@ -18,20 +18,22 @@ SevenSegmentTM1637 display(PIN_CLK, PIN_DIO);
 TinyGPSPlus gps;
 SoftwareSerial ss(PIN_RX, PIN_TX);
 //USER-MADE FUNCTIONS: These are the ones we're coding :)
-void printMPH(float mph){
+void printMPH(double speed){
   //Ben: this function should take in a decimal, and print that out to the display. it should only have 3 digits, formatted xx.x.
   //Should return nothing, hence: "void". still needs a return statement. 
 }
 
-float getMPH(){
-  // Patrick: should use TinyGPS++ to obtain the MPH. Might not even need a seperate function but it's useful for oraganization.
-  // Note: Use round to return the float at 1 or 2 decimal points
+double getMPH(){
+  double tempMPH = gps.speed.mph();
+  tempMPH = round(tempMPH*10)/10;
+  return tempMPH;
 }
 
 void startGPS(){
   //Patrick: there's some init for this module but I'm not sure. Gotta do more research
   Serial.begin(9600);
   ss.begin(9600);
+  return;
 }
 //ARDINO FUNCTIONS: The board uses these in particular to function. Essential to any and every project.
 void setup() {
@@ -41,9 +43,15 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  float mph = 0;
-  mph = getMPH();
-  mph = round(mph*10)/10;
+  double mph = 0;
+  while (ss.available() > 0){
+    if (gps.encode(ss.read())){
+      mph = 98.7;
+      mph = getMPH();
+      printMPH(mph);
+    }
+  }
+  
   //round function gotten from user rastapasta from: https://community.particle.io/t/changing-a-result-74-14505494505494-to-one-decimal-place/7337
   
 
