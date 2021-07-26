@@ -42,7 +42,7 @@ void startGPS(){
 void startDisplay(){
   //serial should be begun now but already doing it in gps init
   display.begin();
-  display.setBacklight(1000);
+  display.setBacklight(100);
   display.setColonON(true);
   return;
 }
