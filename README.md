@@ -9,7 +9,9 @@ Install the following libraries:
 
 (Both libraries are linked in the arduino file itself aswell.)
 
-Afterwards, simply download or clone this repository, and load the file into your IDE. After wiring everything up according to the table below, simply flash the Arduino with the code. Be sure to read my notes on the GT-U7 aswell, though they're just observations that don't need to be implemented.
+Afterwards, simply download or clone this repository, and load the file into your IDE.  
+After wiring everything up according to the table below, simply flash the Arduino with the code.   
+(Be sure to read my notes on the GT-U7 aswell, though they're just observations that don't need to be implemented.)
 
 ## Pin Layout
 
@@ -28,7 +30,7 @@ Another thing I noticed is that the labels on my module for TX and Rx are revers
   
 The weirdest, and far more important, thing is that: **The RX and TX pins are 3.3v high**.  
   
-This means that you should use a bidirectional level converter with your module for optimal lifespan.  
+This means that you should use a bidirectional level converter with your module for optimal lifespan, if your controller outputs 5V high. The Arduino Nano, which I used, outputs5V high, so I implemented one.  
   
 Here's the wiring for that:
 Pin Label | Module Pin
