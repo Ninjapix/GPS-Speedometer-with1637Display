@@ -1,5 +1,6 @@
 //INCLUDE STATEMENTS: these are important because it's what allows us to use new libraries.
 #include <SevenSegmentTM1637.h>
+//from: https://github.com/bremme/arduino-tm1637
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 
@@ -20,8 +21,12 @@ SoftwareSerial ss(PIN_RX, PIN_TX);
 
 //USER-MADE FUNCTIONS: These are the ones we're coding :)
 void printMPH(int speed){
-  //Ben: this function should take in a decimal, and print that out to the display. it should only have 3 digits, formatted xx.x.
+  //this function should take in an integer, and print that out to the display. it should only have 3 digits, formatted xx.x.
   //Should return nothing, hence: "void". still needs a return statement. 
+  display.print(speed);
+  Serial.print(speed);
+  display.clear();
+  return;
 }
 
 int getMPH(){
@@ -40,7 +45,7 @@ int getMPH(){
 void startGPS(){
   //Patrick: there's some init for this module but I'm not sure. Gotta do more research
   //Upate: yeah no there was like no init haha. It's just starting software serial +  normal serial, which can probably be ommitted. Too lazy to see if that's the case or not.
-  Serial.begin(9600);
+  Serial.begin(11500);
   ss.begin(9600);
   return;
 }
