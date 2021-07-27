@@ -30,7 +30,7 @@ Another thing I noticed is that the labels on my module for TX and Rx are revers
   
 The weirdest, and far more important, thing is that: **The RX and TX pins are 3.3v high**.  
   
-This means that you should use a bidirectional level converter with your module for optimal lifespan, if your controller outputs 5V high. The Arduino Nano, which I used, outputs5V high, so I implemented one.  
+This means that you should use a bidirectional level converter with your module for optimal lifespan, if your controller outputs 5V high. The Arduino Nano, which I used, outputs 5V high, so I implemented one.  
   
 Here's the wiring for that:
 Pin Label | Module Pin
