@@ -2,7 +2,9 @@
 #include <SevenSegmentTM1637.h>
 //from: https://github.com/bremme/arduino-tm1637
 #include <TinyGPS++.h>
+//from: http://arduiniana.org/libraries/tinygpsplus/
 #include <SoftwareSerial.h>
+//built in library
 
 //PIN DEFINITIONS: use these so you don't need to write pin numbers. Makes life easier. Usage: digitalRead(PIN_A), where pin A is a definition for another pin
 //TM1637 Pins
@@ -23,6 +25,7 @@ SoftwareSerial ss(PIN_RX, PIN_TX);
 void printMPH(int speed){
   //this function should take in an integer, and print that out to the display. it should only have 3 digits, formatted xx.x.
   //Should return nothing, hence: "void". still needs a return statement. 
+  //~~length determination idea gotten from https://forum.arduino.cc/t/how-to-get-the-length-of-integer-numbers/43675/2
   if(speed < 10){
     display.print("00");
     display.setCursor(1,2);
@@ -30,12 +33,12 @@ void printMPH(int speed){
     display.print("0");
     display.setCursor(1,1); 
   }
-  //length determination idea gotten from https://forum.arduino.cc/t/how-to-get-the-length-of-integer-numbers/43675/2
   display.print(speed);
-  //uncomment the bottom two lines to have it display a zero after the tenth's mark.
+  //~~uncomment the bottom two lines to have it display a zero after the tenth's mark.
   //display.setCursor(1,3);
   //display.print("0");
-  Serial.println(speed);
+  //~~line below is for debugging:
+  //Serial.println(speed);
   display.home();
   return;
 }
@@ -43,9 +46,9 @@ void printMPH(int speed){
 int getMPH(){
   //This function can easily be replaced with just normal code. For some reason the double will output as xx.xx instead of xx.x for decimals, despite the fact that the hundreths is just zeros.
   double tempMPH = gps.speed.mph();
-  tempMPH = round(tempMPH*10);
   //round function gotten from user rastapasta from: https://community.particle.io/t/changing-a-result-74-14505494505494-to-one-decimal-place/7337/2
-  //round function not ended up being used, as decimals don't play well.
+  //round function not ended up being used, as decimals don't play well with display library.
+  tempMPH = round(tempMPH*10);
   int tempMPH2 = tempMPH;
   if(tempMPH2 > 999){
     tempMPH2 = 999;
