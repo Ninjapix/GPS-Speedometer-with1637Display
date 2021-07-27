@@ -9,7 +9,7 @@ Install the following libraries:
 
 (Both libraries are linked in the arduino file itself aswell.)
 
-Afterwards, simply download or clone this repository, and load the file into your IDE. After wiring everything up according to the table below, simply flash the Arduino with the code.
+Afterwards, simply download or clone this repository, and load the file into your IDE. After wiring everything up according to the table below, simply flash the Arduino with the code. Be sure to read my notes on the GT-U7 aswell, though they're just observations that don't need to be implemented.
 
 ## Pin Layout
 
