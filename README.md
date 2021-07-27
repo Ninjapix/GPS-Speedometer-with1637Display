@@ -23,10 +23,11 @@ Pin Label | Arduino Pin
  GND (Both)| GND (Common)
 
 ### Important Notes on the GT-U7
-The GT-U7 is really weird. For starters, it uses 9600 baud, which is way faster than other GPS modules.
-Another thing I noticed is that the labels on my module for TX and Rx are reversed.
-The weirdest, and far more important, thing is that: **The RX and TX pins are 3.3v high**. 
-This means that you should use a bidirectional level converter with your module for optimal lifespan.
+The GT-U7 is really weird. For starters, it uses 9600 baud, which is way faster than other GPS modules.  
+Another thing I noticed is that the labels on my module for TX and Rx are reversed.  
+  
+The weirdest, and far more important, thing is that: **The RX and TX pins are 3.3v high**.  
+This means that you should use a bidirectional level converter with your module for optimal lifespan.  
 Here's the wiring for that:
 Pin Label | Module Pin
 ----------|------------
