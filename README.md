@@ -23,7 +23,7 @@ Pin Label | Arduino Pin
  GND (Both)| GND (Common)
 
 ### Important Notes on the GT-U7
-The GT-U7 is really weird. For starters, it uses 9600 baud, which is way faster than other GPS modules
+The GT-U7 is really weird. For starters, it uses 9600 baud, which is way faster than other GPS modules.
 Another thing I noticed is that the labels on my module for TX and Rx are reversed.
 The weirdest, and far more important, thing is that: **The RX and TX pins are 3.3v high**. 
 This means that you should use a bidirectional level converter with your module for optimal lifespan.
@@ -38,12 +38,12 @@ Pin Label | Module Pin
  H2| Digital 10 (Arduino)
  L2| RX (GT-U7*)
 
-* = Remember that the GT-U7 pins are reversed from what they should actually be, since mine were reversed.
+\* = Remember that the GT-U7 pins are reversed from what they should actually be, since mine were reversed.
 
 ## Quick Troubleshooting Tips
-1. If you're getting no Serial Monitor output for testing purposes, make sure you're on the right Baud rate.
-1. If you're getting INVALID in Serial Monitor output for both date and location when running the DeviceExample for TinyGPS, try just reversing the pins for the TX and RX pins in the code (you don't need to physically change them).
-	1. If you're just getting INVALID for the location, but the date is right, remember that GPSes take a bit to warm up. Please wait warmly.
-		1. Also, moving to a window helped speed up the wait for me, as the signal is stronger there.
+1. If you're getting no Serial Monitor output for testing purposes, make sure you're on the right Baud rate.  
+1. If you're getting INVALID in Serial Monitor output for both date and location when running the DeviceExample for TinyGPS, try just reversing the pins for the TX and RX pins in the code (you don't need to physically change them).  
+1. If you're just getting INVALID for the location, but the date is right, remember that GPSes take a bit to warm up. Please wait warmly.  
+	* Also, moving to a window helped speed up the wait for me, as the signal is stronger there.  
 
  
